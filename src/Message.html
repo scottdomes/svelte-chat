@@ -1,4 +1,4 @@
-<div class="message" class:mine="message.author === username">
+<div class="message" class:mine="message.author === username" transition:fade>
   <p class="text">{message.text}</p>
   {#if showAuthor(message, nextMessage)}
   <p class="author">{message.author}</p>
@@ -26,19 +26,6 @@
     color: white;
   }
 
-  .message a {
-    text-decoration: none;
-  }
-
-  .message a:visited,
-  .message a {
-    color: black;
-  }
-
-  .message a:hover {
-    color: #a62824;
-  }
-
   .message p.author {
     background-color: white;
     font-size: 0.8em;
@@ -48,11 +35,13 @@
 </style>
 
 <script>
+  import { fade } from 'svelte-transitions';
   export default {
     helpers: {
       showAuthor(msg, nextMsg) {
         return !nextMsg || nextMsg.author !== msg.author;
       }
-    }
+    },
+    transitions: { fade }
   };
 </script>

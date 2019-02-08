@@ -14,7 +14,8 @@ const getMessages = db => {
 
 const handleNewMessage = (db, client, io) => {
   client.on('newMessage', async message => {
-    await db.collection('messages').insertOne({ text: message });
+    const { text, author } = message;
+    await db.collection('messages').insertOne({ text, author });
     emitMessages(db, io);
   });
 };

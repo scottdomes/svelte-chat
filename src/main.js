@@ -4,15 +4,24 @@ import App from './App.html';
 const socket = io('http://localhost:3000');
 
 const app = new App({
-  target: document.body,
+  target: document.getElementById('root'),
   data: {
     messages: [],
-    newMessage: ''
+    newMessage: '',
+    username: 'Scott'
   }
 });
 
 app.on('submitForm', () => {
-  socket.emit('newMessage', app.get().newMessage);
+  const { newMessage, username } = app.get();
+  socket.emit('newMessage', {
+    text: newMessage,
+    author: username
+  });
+});
+
+app.on('setUsername', () => {
+  app.set({ username: document.getElementById('enter-username').value });
 });
 
 socket.on('messages', messages => {

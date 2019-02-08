@@ -1,0 +1,12 @@
+<ul>
+  {#each messages as message}
+  <li>{message.text}</li>
+  {:else}
+  <li>No messages</li>
+  {/each}
+</ul>
+
+<form on:submit|preventDefault="fire('submitForm')">
+  <textarea bind:value="newMessage" />
+  <button type="submit">Send</button>
+</form>

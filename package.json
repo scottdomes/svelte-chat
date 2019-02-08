@@ -1,0 +1,38 @@
+{
+  "name": "svelte-app",
+  "version": "1.0.0",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-plugin-transform-async-functions": "^6.22.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-es2015-node5": "^1.2.0",
+    "cross-env": "^5.1.5",
+    "css-loader": "^1.0.0",
+    "mini-css-extract-plugin": "^0.4.0",
+    "nodemon": "^1.18.9",
+    "serve": "^10.0.2",
+    "style-loader": "^0.23.1",
+    "svelte": "^2.0.0",
+    "svelte-loader": "2.11.0",
+    "webpack": "^4.8.3",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.9"
+  },
+  "scripts": {
+    "build": "cross-env NODE_ENV=production webpack",
+    "dev": "webpack-dev-server --content-base public",
+    "start:api": "nodemon --exec babel-node server/index.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "http": "^0.0.0",
+    "mime": "^2.4.0",
+    "mongodb": "^3.1.13",
+    "socket.io": "^2.2.0",
+    "socket.io-client": "^2.2.0"
+  }
+}

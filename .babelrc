@@ -1,0 +1,11 @@
+{
+  plugins: [
+    'transform-class-properties',
+    'transform-object-rest-spread',
+    'syntax-async-functions',
+    'transform-runtime',
+  ],
+  presets: [
+    'es2015-node5',
+  ],
+}

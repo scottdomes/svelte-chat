@@ -1,36 +1,11 @@
 <div id="container">
   {#if username}
   <div id="chat-container">
-    <div id="message-container">
-      {#each messages as message, i}
-      <div class="message">
-        <p>{message.text}</p>
-        {#if showAuthor(message, messages[i + 1])}
-        <p class="author">{message.author}</p>
-        {/if}
-      </div>
-      {:else}
-      <p>No messages</p>
-      {/each}
-    </div>
-    <form on:submit|preventDefault="fire('submitForm')" id="chat-input">
-      <textarea bind:value="newMessage" />
-      <button type="submit">
-        <svg viewBox="0 0 24 24">
-          <path fill="#424242" d="M2,21L23,12L2,3V10L17,12L2,14V21Z" />
-        </svg>
-      </button>
-    </form>
+    <MessageList {messages} {username} />
+    <ChatInput bind:newMessage />
   </div>
-
   {:else}
-  <div id="login">
-    <form on:submit|preventDefault="fire('setUsername')">
-      <label for="enter-username">Enter a username.</label>
-      <input type="text" id="enter-username" placeholder="Your username" />
-      <button type="submit">Enter</button>
-    </form>
-  </div>
+  <LoginForm />
   {/if}
 </div>
 
@@ -45,112 +20,22 @@
     flex: 1;
   }
 
-  #login {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    height: 100%;
-  }
-
-  #login label {
-    margin-bottom: 5px;
-  }
-
   #chat-container {
     height: 100%;
     overflow: hidden;
     position: relative;
     padding-bottom: 50px;
   }
-
-  #chat-input {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    padding-top: 5px;
-    background-color: white;
-  }
-
-  #chat-input textarea {
-    width: 85%;
-    border-radius: 10px;
-    border: none;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    padding: 5px 8px;
-    float: left;
-  }
-
-  #chat-input button {
-    background: none;
-    border: none;
-    width: 15%;
-    padding-top: 6px;
-  }
-
-  #chat-input button svg {
-    width: 24px;
-    height: 24px;
-    text-align: center;
-  }
-
-  #chat-input button:hover {
-    cursor: pointer;
-  }
-
-  #chat-input button:hover svg path {
-    fill: #a62824;
-  }
-
-  #message-container {
-    height: calc(100% - 45px);
-    overflow-y: auto;
-    padding: 0 10px;
-  }
-
-  .message {
-    margin: 7px 0;
-  }
-
-  .message p {
-    border-radius: 5px;
-    padding: 5px;
-    background-color: #eaeaea;
-    display: inline-block;
-  }
-
-  .message.mine {
-    text-align: right;
-  }
-
-  .message a {
-    text-decoration: none;
-  }
-
-  .message a:visited,
-  .message a {
-    color: black;
-  }
-
-  .message a:hover {
-    color: #a62824;
-  }
-
-  .message p.author {
-    background-color: white;
-    font-size: 0.8em;
-    display: block;
-    text-decoration: none;
-  }
 </style>
 
 <script>
+  import ChatInput from './ChatInput.html';
+
   export default {
-    helpers: {
-      showAuthor(msg, nextMsg) {
-        return !nextMsg || nextMsg.author !== msg.author;
-      }
+    components: {
+      ChatInput,
+      LoginForm: './LoginForm.html',
+      MessageList: './MessageList.html'
     }
   };
 </script>

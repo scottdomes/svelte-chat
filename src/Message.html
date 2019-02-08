@@ -1,0 +1,58 @@
+<div class="message" class:mine="message.author === username">
+  <p class="text">{message.text}</p>
+  {#if showAuthor(message, nextMessage)}
+  <p class="author">{message.author}</p>
+  {/if}
+</div>
+
+<style>
+  .message {
+    margin: 7px 0;
+  }
+
+  .message p {
+    border-radius: 5px;
+    padding: 5px;
+    background-color: #eaeaea;
+    display: inline-block;
+  }
+
+  .message.mine {
+    text-align: right;
+  }
+
+  .message.mine p.text {
+    background-color: #a62824;
+    color: white;
+  }
+
+  .message a {
+    text-decoration: none;
+  }
+
+  .message a:visited,
+  .message a {
+    color: black;
+  }
+
+  .message a:hover {
+    color: #a62824;
+  }
+
+  .message p.author {
+    background-color: white;
+    font-size: 0.8em;
+    display: block;
+    text-decoration: none;
+  }
+</style>
+
+<script>
+  export default {
+    helpers: {
+      showAuthor(msg, nextMsg) {
+        return !nextMsg || nextMsg.author !== msg.author;
+      }
+    }
+  };
+</script>

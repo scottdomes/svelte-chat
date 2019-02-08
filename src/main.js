@@ -8,7 +8,7 @@ const app = new App({
   data: {
     messages: [],
     newMessage: '',
-    username: 'Scott'
+    username: 'Scott2'
   }
 });
 
@@ -18,6 +18,7 @@ app.on('submitForm', () => {
     text: newMessage,
     author: username
   });
+  app.set({ newMessage: '' });
 });
 
 app.on('setUsername', () => {

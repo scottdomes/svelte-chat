@@ -1,5 +1,5 @@
 <div id="login">
-  <form on:submit|preventDefault="root.fire('setUsername')">
+  <form on:submit|preventDefault="fire('submit')">
     <label for="enter-username">Enter a username.</label>
     <input type="text" id="enter-username" placeholder="Your username" />
     <button type="submit">Enter</button>

@@ -1,5 +1,5 @@
-<form on:submit|preventDefault="root.fire('submitForm')" id="chat-input">
-  <textarea bind:value="newMessage" />
+<form on:submit|preventDefault="fire('submit')" id="chat-input">
+  <input bind:value="newMessage" />
   <button type="submit">
     <svg viewBox="0 0 24 24">
       <path fill="#424242" d="M2,21L23,12L2,3V10L17,12L2,14V21Z" />
@@ -17,7 +17,7 @@
     background-color: white;
   }
 
-  #chat-input textarea {
+  #chat-input input {
     width: 85%;
     border-radius: 10px;
     border: none;
@@ -30,7 +30,7 @@
     background: none;
     border: none;
     width: 15%;
-    padding-top: 6px;
+    padding-top: 2px;
     margin: 0;
   }
 

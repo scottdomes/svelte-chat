@@ -2,10 +2,10 @@
   {#if username}
   <div id="chat-container">
     <MessageList {messages} {username} />
-    <ChatInput bind:newMessage />
+    <ChatInput bind:newMessage on:submit="fire('submitForm')"/>
   </div>
   {:else}
-  <LoginForm />
+  <LoginForm on:submit="fire('setUsername')" />
   {/if}
 </div>
 

@@ -8,7 +8,7 @@ const app = new App({
   data: {
     messages: [],
     newMessage: '',
-    username: 'Scott2'
+    username: ''
   }
 });
 
